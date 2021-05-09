@@ -1,52 +1,91 @@
 * {
     font-family: Monospace, sans-serif;
     font-weight:300;
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    /* transform:scale(0.98); */
+    background: rgb(26, 26, 26);
+   
 }
 
 body {
-    box-sizing: border-box;
-    margin: 0;
-    background-color: rgb(231, 231, 231);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-
-h1 {
+header {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-    margin-top: 5rem;
-    font-weight:300;
-    letter-spacing: 4px;
-    text-decoration: underline;
+    margin-top: 0.5rem;
 }
 
-#buttons {
-    display: flex;
+header img {
+    height: 35px;
+    margin-left: 2rem;
+}
+h1 {
+    /* display: flex;
     justify-content: center;
-    align-items: stretch;
-    width: 70rem;
-    margin: auto;
-    flex-wrap: wrap;
+    align-items: center; */
+    font-weight:400;
+    letter-spacing: 2px;
+    color:rgb(246, 246, 246);
+    font-size: 3rem;
+    transition: 0.2s;
+}
+h1:hover {
+    transform :rotate3d(0, 0,0, 45deg);
+    color:rgb(182, 24, 24);
+    cursor:crosshair;
+}
+a {
+    text-decoration: none;
+    color: royalblue;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+}
+a:visited {
+    color: royalblue;
+}
 
-    
+#buttonsLeft {
+    text-align: left;
+    /* border: 2px  solid #eeee; */
+}
+#buttonsRight {
+    text-align: right;
+    /* border: 2px  solid #eeee;    */
+
 }
 .btn {
-    padding: 1rem;
-    margin: 1rem;
-    align-items: center;
-    border-radius: 4%;
-    color: black;
-    background-color: rgb(207, 31, 31);
-    text-decoration: none;
-    font-family: monospace;
+    padding-top:    1rem;
+    padding-bottom:    1rem;
+    margin: 0.8rem;
+    color: #eeee;
+    background-color:rgb(17, 17, 17);
+    border: solid #eeee 3px ;
+    font-size: 0.85rem;
+    max-width: 100%;
+    width:  5vw;
     min-width: 10rem;
-    /* border: solid 2px rgb(255, 255, 255); */
-    border: none;
+    margin-bottom: 2rem;
+    transition: 0.1s;
+    /* background: cornflowerblue; */
 }
+
 .btn:hover {
-    background-color: rgb(223, 100, 100);
+    background-color: rgb(170, 26, 26);
     cursor: pointer;
+    /* transform:rotate3d(0,2,0, 20deg); */
     /* border: none; */
+
+}
+
+.btn:active {
+    transform: scale(1.05);
 }
 
 #gif {
@@ -54,9 +93,91 @@ h1 {
     pointer-events:none;
     display: flex;
     justify-content: center;
-    margin: auto;
-    margin-top: 8rem;
-    width: 25rem;
+    /* margin: auto; */
+    margin-top: 2rem;
+    max-width:25vw;
+    width: 430px;
+    height: 430px;
+    /* animation: circle 5s  infinite linear; */
 
 }
 
+.content {
+    display: flex;
+    justify-content: space-around;
+    max-width:86%;
+    margin:auto;
+    /* border: solid beige 2px; */
+
+}
+
+.sectionLeft {
+    /* border: 2px  solid #eeee; */
+    max-width: 500px;
+}
+.sectionRight {
+    /* border: 2px  solid #eeee; */
+    max-width: 500px;   
+}
+
+.stop {
+    text-align: center;
+}
+
+#stopButton {
+    padding-top:    1rem;
+    padding-bottom:    1rem;
+    margin: 0.8rem;
+    color: #eeee;
+    background-color:rgb(17, 17, 17);
+    border: solid #eeee 3px ;
+    font-size: 1rem;
+    max-width: 100%;
+    width: 10rem;
+    margin-bottom: 2rem;
+    transition: 0.1s;
+    background-color: royalblue;
+}
+
+#stopButton:hover {
+   background-color: rgb(182, 24, 24);
+   cursor:pointer;
+
+}
+#stopButton:active {
+    transform:scale(1.05)
+}
+
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0)
+        }
+        100% {
+            transform: translateY(-30px)
+            }
+}
+
+@keyframes circle {
+    0% {transform: rotate(0deg) translateX(10px) rotate(0deg);}
+    100% {transform: rotate(360deg) translateX(10px) rotate(-360deg);}
+   
+}
+
+@keyframes strave {
+    0% {transform: translateY(0px) translateX(0px) rotate(5deg) }
+    100% {transform: translateY(-10px) translateX(10px) rotate(-5deg) }
+}
+
+@media screen and (max-width: 1218px) {
+    #gif {
+        display: none;
+    }    
+    .content {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+    body {
+        overflow-y:auto;
+    }
+}
