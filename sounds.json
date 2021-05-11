@@ -1,0 +1,104 @@
+{
+    "sounds": [
+        {
+            "name": "blyat",
+            "speed": "0.1",
+            "modes": "infinite alternate ease-in"
+        },
+        {
+            "name": "defos",
+            "speed": "0.1",
+            "modes": "infinite alternate ease-in"
+        },
+        {
+            "name": "fuck man",
+            "speed": "0.15",
+            "modes": "infinite alternate  ease-in"
+        },
+        {
+            "name": "fuck",
+            "speed": "0.3",
+            "modes": "forwards alternate ease-out"
+        },
+        {
+            "name": "haha fuck",
+            "speed": "0.1",
+            "modes": "infinite alternate ease"
+        },
+        {
+            "name": "holy christ",
+            "speed": "0.22",
+            "modes": "infinite  ease-in-out"
+        },
+        {
+            "name": "HUW",
+            "speed": "0.2",
+            "modes": "alternate ease-in forwards"
+        },
+        {
+            "name": "HUW 2",
+            "speed": "0.3",
+            "modes": "alternate ease-in forwards"
+        },
+        {
+            "name": "HUW 3",
+            "speed": "0.3",
+            "modes": "forwards linear"
+        },
+        {
+            "name": "Kidding 1",
+            "speed": "0.08",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "Kidding 2",
+            "speed": "0.13",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "knife",
+            "speed": "0.1",
+            "modes": "infinite alternate ease"
+        },
+        {
+            "name": "laugh",
+            "speed": "0.1",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "Lullaby 1",
+            "speed": "0.2",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "Lullaby 2",
+            "speed": "0.25",
+            "modes": "infinite alternate ease"
+        },
+        {
+            "name": "sick",
+            "speed": "0.15",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "skibidi",
+            "speed": "0.05",
+            "modes": "infinite alternate linear"
+        },
+        {
+            "name": "what",
+            "speed": "0.4",
+            "modes": " forwards alternate ease"
+        },
+        {
+            "name": "Woah",
+            "speed": "0.13",
+            "modes": "infinite alternate ease-in"
+        },
+        {
+            "name": "wtf",
+            "speed": "0.13",
+            "modes": "infinite alternate ease"
+        }
+    ]
+}

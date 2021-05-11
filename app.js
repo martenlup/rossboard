@@ -1,57 +1,78 @@
-const sounds1 = ["blyat", "holy christ", "defos", "fuck man", "fuck", "haha fuck", "huw_1", "huw_2", "huw_3", "kidding_1"];
-const sounds2 = ["kidding_2", "knife", "laugh", "lullaby_1", "lullaby_2", "sick", "skibidi", "what", "woah_1", "wtf"];
-
-const soundsArr = [{
-    name: "blyat",
-    speed: 1,
-}, {
-    name: "skibidi",
-    speed: 2,
-}]
-
-
 const buttonsLeft = document.getElementById("buttonsLeft");
 const buttonsRight = document.getElementById("buttonsRight");
 const stopButton = document.getElementById("stopButton");
+// const sounds1 = ["blyat", "holy christ", "defos", "fuck man", "fuck", "haha fuck", "huw_1", "huw_2", "huw_3", "kidding_1"];
+// const sounds2 = ["kidding_2", "knife", "laugh", "lullaby_1", "lullaby_2", "sick", "skibidi", "what", "woah_1", "wtf"];
+
+
+let soundsArray = undefined;
+let leftArr = undefined;
+let rightArr = undefined;
+
+
+getSounds();
+
+async function getSounds() {
+    const resp = await fetch("./sounds.json");
+    const soundsJSON = await resp.json();
+    soundsArray = soundsJSON.sounds
+
+    spliceSounds();
+    createSoundElement(soundsArray);
+    createButtons(leftArr, buttonsLeft);
+    createButtons(rightArr, buttonsRight);
+}
+
+function spliceSounds() {
+    const half = Math.ceil(soundsArray.length / 2);
+    leftArr = soundsArray.slice(0, half);
+    rightArr = soundsArray.slice(half, soundsArray.length);
+}
+
 
 function createSoundElement(arr) {
-    arr.forEach((sound) => {
+    arr.forEach((object) => {
         const AudioHTML = document.createElement("audio");
-        AudioHTML.id = sound;
-        AudioHTML.setAttribute("src", `sounds/${sound}.wav`);
+        AudioHTML.id = object.name;
+        AudioHTML.setAttribute("src", `sounds/${object.name}.wav`);
         document.body.appendChild(AudioHTML);
     })
 }
 
+
 function createButtons(arr, div) {
-    arr.forEach((sound) => {
+    arr.forEach((object) => {
         const btn = document.createElement("button");
         btn.classList.add("btn");
-        btn.innerText = sound;
+        btn.innerText = object.name;
         btn.addEventListener('click', () => {
-            stopSongs(sounds1);
-            stopSongs(sounds2);
-            let track = document.getElementById(sound)
+            console.log(object.speed);
+            stopSongs(soundsArray);
+            let track = document.getElementById(object.name)
             track.play();
-            document.getElementById("gif").style.animation = "none";
+            document.getElementById("mouth").style.animation = "none";
+            document.body.style.animation = "none";
+            // document.getElementById("middle").style.animation = "none";
             setTimeout(() => {
-                document.getElementById("gif").style.animation = `circle 5s infinite linear`;
-                document.getElementById("gif").style.opacity = "1";
-            }, 2);
+                document.getElementById("mouth").style.animation = `talk ${object.speed}s ${object.modes}`;
+                document.getElementById("middle").style.animation = `circle 2s infinite linear`;
+                document.getElementById("middle").style.opacity = "1";
+                document.body.style.animation = `colorPulse 0.2s forwards linear`;
+            }, 5);
             endedSongs(arr);
-
         })
         div.appendChild(btn);
-
     })
 }
 
 function endedSongs(arr) {
-    arr.forEach((sounds) => {
-        let sound = document.getElementById(sounds);
+    arr.forEach((object) => {
+        let sound = document.getElementById(object.name);
         sound.addEventListener("ended", () => {
-            document.getElementById("gif").style.opacity = "0";
+            document.getElementById("middle").style.opacity = "0";
             document.getElementById("gif").style.animation = "none";
+            document.getElementById("middle").style.animation = "none";
+            document.body.style.animation = `colorPulse 0.2s reverse none linear`;
 
         })
     })
@@ -59,7 +80,7 @@ function endedSongs(arr) {
 
 function stopSongs(arr) {
     for (var i = 0; i < arr.length; i++) {
-        let sound = document.getElementById(arr[i]);
+        let sound = document.getElementById(arr[i].name);
         sound.pause();
         sound.currentTime = 0;
     }
@@ -71,24 +92,7 @@ function randomNumber(number) {
 }
 
 stopButton.addEventListener("click", () => {
-    stopSongs(sounds1);
-    stopSongs(sounds2);
-    document.getElementById("gif").style.opacity = "0";
-
+    stopSongs(soundsArray);
+    document.getElementById("middle").style.opacity = "0";
+    document.body.style.animation = `colorPulse 0.2s reverse none linear`;
 })
-
-createSoundElement(sounds1);
-createSoundElement(sounds2);
-createButtons(sounds1, buttonsLeft);
-createButtons(sounds2, buttonsRight);
-
-
-
-function test(arr) {
-    for (i = 0; i < arr.length; i++) {
-        const index = arr[i].name;
-        console.log(index);
-    }
-}
-
-test(sounds);
